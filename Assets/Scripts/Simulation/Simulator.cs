@@ -495,8 +495,9 @@ namespace DLS.Simulation
 					const int ByteMask = 0b11111111;
 					uint address = PinState.GetBitStates(chip.InputPins[0].State);
 					uint data = chip.InternalState[address];
-					chip.OutputPins[0].State = (ushort)((data >> 8) & ByteMask);
-					chip.OutputPins[1].State = (ushort)(data & ByteMask);
+					chip.OutputPins[0].State = (ushort)((data >> 16) & ByteMask);
+					chip.OutputPins[1].State = (ushort)((data >> 8) & ByteMask);
+					chip.OutputPins[2].State = (ushort)(data & ByteMask);
 					break;
 				}
 				case ChipType.Buzzer:
