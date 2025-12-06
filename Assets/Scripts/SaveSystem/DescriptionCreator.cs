@@ -84,7 +84,7 @@ namespace DLS.SaveSystem
 		{
 			return type switch
 			{
-				ChipType.Rom_256x24 => new uint[256], // ROM contents
+				ChipType.Rom_256x16 => new uint[256], // ROM contents
 				ChipType.Key => new uint[] { 'K' }, // Key binding
 				ChipType.Pulse => new uint[] { 50, 0, 0 }, // Pulse width, ticks remaining, input state old
 				ChipType.DisplayLED => new uint[] { 0 }, // LED colour
