@@ -490,7 +490,7 @@ namespace DLS.Simulation
 
 					break;
 				}
-				case ChipType.Rom_256x16:
+				case ChipType.Rom_256x24:
 				{
 					const int ByteMask = 0b11111111;
 					uint address = PinState.GetBitStates(chip.InputPins[0].State);

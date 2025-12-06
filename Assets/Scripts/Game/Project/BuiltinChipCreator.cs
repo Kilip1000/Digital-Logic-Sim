@@ -117,7 +117,7 @@ namespace DLS.Game
 			Color col = new(0.25f, 0.35f, 0.5f);
 			Vector2 size = new(GridSize * 12, SubChipInstance.MinChipHeightForPins(inputPins, outputPins));
 
-			return CreateBuiltinChipDescription(ChipType.Rom_256x16, size, col, inputPins, outputPins);
+			return CreateBuiltinChipDescription(ChipType.Rom_256x24, size, col, inputPins, outputPins);
 		}
 
 		static ChipDescription CreateInputKeyChip()
