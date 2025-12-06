@@ -341,7 +341,7 @@ namespace DLS.Graphics
 		{
 			romChip = (SubChipInstance)ContextMenu.interactionContext;
 			RowCount = romChip.InternalData.Length;
-			ActiveRomDataBitCount = 16; //
+			ActiveRomDataBitCount = 24; //
 
 			ID_DataDisplayMode = new UIHandle("ROM_DataDisplayMode", romChip.ID);
 			ID_scrollbar = new UIHandle("ROM_EditScrollbar", romChip.ID);
