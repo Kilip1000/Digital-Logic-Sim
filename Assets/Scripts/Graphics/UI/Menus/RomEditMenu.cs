@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using DLS.Game;
+using DLS.Description;
 using Seb.Helpers;
 using Seb.Types;
 using Seb.Vis;
@@ -349,9 +350,17 @@ namespace DLS.Graphics
 
 		public static void OnMenuOpened()
 		{
-			romChip = (SubChipInstance)ContextMenu.interactionContext;
+			romChip = ContextMenu.interactionContext as SubChipInstance;
+
+			//if it's not a valid rom chip early return (and close menu)
+			if (romChip == null || romChip.InternalData == null)
+			{
+				UIDrawer.SetActiveMenu(UIDrawer.MenuType.None);
+				return;
+			}
+
 			RowCount = romChip.InternalData.Length;
-			ActiveRomDataBitCount = 32; // support 4 bytes (32 bits)
+			ActiveRomDataBitCount = romChip.ChipType == ChipType.Rom_256x16 ? 16 : 32; //ternary might be annoying to work with to make this expandable for later, but for now it's fine
 
 			ID_DataDisplayMode = new UIHandle("ROM_DataDisplayMode", romChip.ID);
 			ID_scrollbar = new UIHandle("ROM_EditScrollbar", romChip.ID);

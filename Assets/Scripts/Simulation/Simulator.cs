@@ -626,6 +626,15 @@ namespace DLS.Simulation
 					chip.OutputPins[3].State = (ushort)(data & ByteMask);
 					break;
 				}
+				case ChipType.Rom_256x16:
+				{
+					const int ByteMask = 0b11111111;
+					uint address = PinState.GetBitStates(chip.InputPins[0].State);
+					long data = chip.InternalState[address];
+					chip.OutputPins[0].State = (ushort)((data >> 8) & ByteMask);
+					chip.OutputPins[1].State = (ushort)(data & ByteMask);
+					break;
+				}
 				case ChipType.Buzzer:
 				{
 					int freqIndex = PinState.GetBitStates(chip.InputPins[0].State);
@@ -829,3 +838,4 @@ namespace DLS.Simulation
 		}
 	}
 }
+

@@ -110,6 +110,7 @@ namespace DLS.Simulation
 				case ChipType.Pulse:
 				case ChipType.dev_Ram_8Bit:
 				case ChipType.Rom_256x32:
+				case ChipType.Rom_256x16:
 				case ChipType.SevenSegmentDisplay:
 				case ChipType.DisplayRGB:
 				case ChipType.DisplayDot:
@@ -415,3 +416,4 @@ namespace DLS.Simulation
 		}
 	}
 }
+

@@ -59,18 +59,23 @@ namespace DLS.Game
 			{
 				InternalData = new long[subChipDesc.InternalData.Length];
 				Array.Copy(subChipDesc.InternalData, InternalData, InternalData.Length);
+			}
 
-				if (ChipType == ChipType.Key)
-				{
-					SetKeyChipActivationChar((char)subChipDesc.InternalData[0]);
-				}
+			if (InternalData == null || InternalData.Length == 0)
+			{
+				InternalData = new long[256];
+			}
 
-				if (IsBus && InternalData.Length > 1)
+			if (ChipType == ChipType.Key)
+			{
+				SetKeyChipActivationChar((char)InternalData[0]);
+			}
+
+			if (IsBus && InternalData.Length > 1)
+			{
+				foreach (PinInstance pin in AllPins)
 				{
-					foreach (PinInstance pin in AllPins)
-					{
-						pin.SetBusFlip(BusIsFlipped);
-					}
+					pin.SetBusFlip(BusIsFlipped);
 				}
 			}
 
@@ -395,3 +400,4 @@ namespace DLS.Game
 		}
 	}
 }
+
